@@ -4,7 +4,7 @@
 
 # 为什么要做这个配置包？
 
-* 以前一直使用virtual+ubuntu虚拟机环境来搭建php开发环境，配置慢，不利于共享
+* 以前一直使用virtualbox+ubuntu虚拟机环境来搭建php开发环境，配置慢，不利于共享
 * 前一段时间采用Docker配置，官方很多包默认采用ubuntu为底包，包很大，还是不利于共享，我配置好完整的LNMP Docker image有1G多
 * 后来了解到alpine，一个轻量级的linux发行版，小到5M的底包，docker build速度非常快，所以就有了自己做一个开发环境配置包的想法。
 
@@ -28,10 +28,10 @@
 
 # 模块组成
 
-* alpine为基础包
-* nginx
-* mysql
-* php
+* alpine 3.4为基础包
+* nginx 1.10.1
+* mariaDB 10.1.14 兼容mysql 5.6 
+* php 5.6.25
 
 # 开始使用
 
