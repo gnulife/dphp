@@ -1,0 +1,37 @@
+version: '2'
+services:
+  mysql:
+    build: mysql
+    image: water/mysql
+    volumes:
+      - "./volumes/mysql:/apps/mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=your_db_name
+      - MYSQL_USER=developer
+      - MYSQL_PASSWORD=developer
+    restart: always
+
+  phpfpm:
+    build: phpfpm
+    image: water/phpfpm
+    links:
+      - mysql
+    volumes:
+      - "./volumes/apps:/apps"
+    ports:
+      - "9000:9000"
+    restart: always
+
+  nginx:
+    build: nginx
+    image: water/nginx
+    links:
+      - phpfpm
+    volumes_from:
+      - phpfpm
+    ports:
+      - "80:80"
+    restart: always
