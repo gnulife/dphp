@@ -26,12 +26,6 @@
 
 * 总共生成4个镜像，合计：278MB
 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-water/nginx         latest              1d1b44665e73        21 minutes ago      12.6 MB
-water/phpfpm        latest              6cc0cb8fdb6f        21 minutes ago      84.76 MB
-water/mysql         latest              5852f1bf6806        22 minutes ago      175.7 MB
-alpine              latest              4e38e38c8ce0        12 weeks ago        4.799 MB
-
 # 模块组成
 
 * alpine为基础包
