@@ -42,8 +42,8 @@ RUN apk add php5 \
     php5-phar \
     openssl
 
-RUN wget https://getcomposer.org/composer.phar -O /bin/composer
-RUN chmod +x /bin/composer
+RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 # 软件包参数配置
 ENV PHP_MEMORY_LIMIT 512M
