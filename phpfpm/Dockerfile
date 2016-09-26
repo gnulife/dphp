@@ -39,12 +39,17 @@ RUN apk add php5 \
     php5-iconv \
     php5-curl \
     php5-ctype \
-    php5-phar
+    php5-phar \
+    openssl
+
+RUN wget https://getcomposer.org/composer.phar -O /bin/composer
+RUN chmod +x /bin/composer
 
 # 软件包参数配置
 ENV PHP_MEMORY_LIMIT 512M
 ENV MAX_UPLOAD 50M
 ENV PHP_MAX_FILE_UPLOAD 200
+ENV MAX_EXECUTION_TIME 600
 ENV PHP_MAX_POST 100M
 
 RUN touch /etc/php5/fpm.d/none.conf
@@ -56,6 +61,7 @@ sed -i "s|date.timezone =.*|date.timezone = ${TIMEZONE}|" /etc/php5/php.ini && \
 sed -i "s|memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|" /etc/php5/php.ini && \
 sed -i "s|upload_max_filesize =.*|upload_max_filesize = ${MAX_UPLOAD}|" /etc/php5/php.ini && \
 sed -i "s|max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|" /etc/php5/php.ini && \
+sed -i "s|max_execution_time =.*|max_execution_time = ${MAX_EXECUTION_TIME}|" /etc/php5/php.ini && \
 sed -i "s|post_max_size =.*|max_file_uploads = ${PHP_MAX_POST}|" /etc/php5/php.ini && \
 sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/php.ini && \
 sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php5/php.ini && \

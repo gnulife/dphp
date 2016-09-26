@@ -1,3 +1,10 @@
+# 版本：1.02 更新记录
+
+* 项目重命名简化为dphp，取docker php之意
+* 增加php.ini中max_execution_time的配置
+* 增加php composer包
+* 增加在host主机中php、composer别名指向到phpfpmp容器，这样可以实现本地完全不需要安装任何php相关组件
+
 # 解决什么问题？
 
 在2分钟内极速高效构建php开发测试环境
@@ -22,8 +29,6 @@
 
 * 整个配置包，68KB.
 * 在【macbook pro 15 英寸，2014 年中】电脑中执行docker-compose build && docker-compose up -d ，总共费用1分钟29秒。
-
-
 * 总共生成4个镜像，合计：278MB
 
 # 模块组成
@@ -38,6 +43,7 @@
 * git clone https://github.com/youwater/alpine_docker4php_dev_test.git
 * docker-compose build && docker-compose up -d
 * open http://localhost/
+* [可选] 配置别名：source alias.sh
 
 # 配置调整
 
