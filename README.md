@@ -28,7 +28,7 @@
 # 效果如何？
 
 * 整个配置包，68KB.
-* 在【macbook pro 15 英寸，2014 年中】电脑中执行docker-compose build && docker-compose up -d ，总共费用1分钟29秒。
+* 在【macbook pro 15 英寸，2014 年中】电脑，电信20M宽带中执行docker-compose build && docker-compose up -d ，总共费用1分钟29秒。
 * 总共生成4个镜像，合计：278MB
 
 # 模块组成
@@ -55,7 +55,7 @@
 
 * 为什么我build的速度很慢？根本达不到文中所说的速度？
 
-  docker本身要配置成采用国内镜像，方法可自行搜索：docker 阿里加速
+  整个镜像包的build过程已全部配置成国内镜像，理论上速度是非常快的，docker本身也要配置成采用国内镜像，方法可自行搜索：docker 国内加速。每台电脑、网络环境都不一样，上面的时间是我在我的电脑上电信20M宽度环境下的build速度，仅供参考。
 
 * 我在windows下mysql容器无法正常运行，提示：
 
