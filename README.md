@@ -2,7 +2,7 @@
 
 * 项目重命名简化为dphp，取docker php之意
 * 增加php.ini中max_execution_time的配置
-* 增加php composer包
+* 增加php composer包，修改为从国内镜像下载
 * 增加在host主机中php、composer别名指向到phpfpmp容器，这样可以实现本地完全不需要安装任何php相关组件
 
 # 解决什么问题？
@@ -47,15 +47,25 @@
 
 # 配置调整
 
-代码里面有注释，应该很容易看懂，可以直接改，然后docker-compose build && docker-compose up -d
+代码里面有注释，应该很容易看懂，可以直接改，然后运行
+
+`docker-compose build && docker-compose up -d`
 
 # 疑问与解答 
 
-问：为什么我build的速度很慢？根本达不到文中所说的速度？
+* 为什么我build的速度很慢？根本达不到文中所说的速度？
 
-​	答：docker本身要配置成采用国内镜像，方法可自行搜索：docker 阿里加速
+  docker本身要配置成采用国内镜像，方法可自行搜索：docker 阿里加速
 
-docker基本概念和环境配置请自行解决。
+* 我在windows下mysql容器无法正常运行，提示：
+
+  `standard_init_linux.go:175: exec user process caused "no such file or directory"`
+
+  这是因为git for windows的默认设置会强制将代码换行符强行转为dos格式，需要修改设置后重新git clone：
+
+  `git config --global core.autocrlf false `
+
+* 其他有关docker基本概念和环境配置请自行搜索解决。
 
 可能还有一些不完善，有什么意见建议欢迎与我联系。
 
