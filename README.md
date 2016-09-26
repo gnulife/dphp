@@ -40,7 +40,7 @@
 
 # 开始使用
 
-* git clone https://github.com/youwater/alpine_docker4php_dev_test.git
+* git clone https://github.com/youwater/dphp.git
 * docker-compose build && docker-compose up -d
 * open http://localhost/
 * [可选] 配置别名：source alias.sh
@@ -50,6 +50,9 @@
 代码里面有注释，应该很容易看懂，可以直接改，然后docker-compose build && docker-compose up -d
 
 # 疑问与解答 
+
+问：为什么我build的速度很慢？根本达不到文中所说的速度？
+答：docker本身要配置成采用国内镜像，方法可自行搜索：docker 阿里加速
 
 docker基本概念和环境配置请自行解决。
 
