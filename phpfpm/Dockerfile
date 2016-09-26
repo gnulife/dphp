@@ -42,6 +42,7 @@ RUN apk add php5 \
     php5-phar \
     openssl
 
+# 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
 RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
 RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
