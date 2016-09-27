@@ -1,6 +1,6 @@
-# 版本：1.02 更新记录
+# 版本：1.04 更新记录
 
-* 项目重命名简化为dphp，取docker php之意
+* 将nginx、php日志也放在host主机volumes/apps/logs/下，方便调试
 * 增加php.ini中max_execution_time的配置
 * 增加php composer包，修改为从国内镜像下载
 * 增加在host主机中php、composer别名指向到phpfpmp容器，这样可以实现本地完全不需要安装任何php相关组件
@@ -23,7 +23,7 @@
 * 默认采用Asia/Shanghai时区，国人开发更方便
 * 默认配置好nginx多虚拟主机环境，可以在host主机按范本修改虚拟主机配置以满足自己的需求
 * 默认配置好php-fpm环境，gd、mcrypt等常见模块均可直接使用
-* 配置文件、程序开发代码、数据均放在host主机，通过volume挂载到相应容器，并可跨容器共享访问
+* 配置文件、程序开发代码、数据、日志均放在host主机，通过volume挂载到相应容器，并可跨容器共享访问
 
 # 效果如何？
 
