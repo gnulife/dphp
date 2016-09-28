@@ -1,5 +1,6 @@
-# 版本：1.04 更新记录
+# 版本：1.06 更新记录
 
+* 增加配置调整说明
 * 将nginx、php日志也放在host主机volumes/apps/logs/下，方便调试
 * 增加php.ini中max_execution_time的配置
 * 增加php composer包，修改为从国内镜像下载
