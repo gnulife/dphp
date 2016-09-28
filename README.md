@@ -24,7 +24,7 @@
 
 # 效果如何？
 
-* 整个配置包，68KB.
+* 整个配置包，72KB.
 * 在【macbook pro 15 英寸，2014 年中】电脑，电信20M宽带中执行`date && docker-compose build && docker-compose up -d && date `，总共费用1分钟07秒。
 * 总共生成4个镜像，合计：282MB
 
