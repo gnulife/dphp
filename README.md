@@ -5,10 +5,6 @@
 * 增加php composer包，修改为从国内镜像下载
 * 增加在host主机中php、composer别名指向到phpfpmp容器，这样可以实现本地完全不需要安装任何php相关组件
 
-# 解决什么问题？
-
-在2分钟内极速高效构建超轻量级docker + php全功能开发测试环境
-
 # 为什么要做这个配置包？
 
 * 以前一直使用virtualbox+ubuntu虚拟机环境来搭建php开发环境，配置慢，不利于共享
