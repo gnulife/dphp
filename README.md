@@ -44,9 +44,27 @@
 
 # 配置调整
 
-代码里面有注释，应该很容易看懂，可以直接改，然后运行
+* 虚拟主机自定义：nginx/conf/vhosts.conf
 
-`docker-compose build && docker-compose up -d`
+  修改里面server_name和root名称为自己想要定义的域名，然后将这个域名添加到/etc/hosts文件，即可建立自己的虚拟主机
+
+* php模块自定义：phpfpm/Dockerfile
+
+  参照注释自行修改即可
+
+* mysql默认帐号密码：docker-compose.yml， 可以根据需要修改，其他配置可在mysql/my.cnf中修改
+
+  ```yaml
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=your_db_name
+    - MYSQL_USER=developer
+    - MYSQL_PASSWORD=developer
+  ```
+
+* 其他配置调整可以参照源码和注释修改，然后运行
+
+  `docker-compose build && docker-compose up -d`
 
 # 疑问与解答 
 

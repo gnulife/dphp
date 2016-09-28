@@ -8,6 +8,7 @@ services:
     ports:
       - "3306:3306"
     environment:
+      # 默认的root密码和需要新建的数据库、用户名、密码，若需要重新设置，需要删除volumes/mysql/下面的全部内容，然后重新build
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=your_db_name
       - MYSQL_USER=developer
