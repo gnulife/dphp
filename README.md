@@ -7,7 +7,7 @@
 
 # 解决什么问题？
 
-在2分钟内极速高效构建php开发测试环境
+在2分钟内极速高效构建超轻量级docker + php全功能开发测试环境
 
 # 为什么要做这个配置包？
 
@@ -29,15 +29,15 @@
 # 效果如何？
 
 * 整个配置包，68KB.
-* 在【macbook pro 15 英寸，2014 年中】电脑，电信20M宽带中执行docker-compose build && docker-compose up -d ，总共费用1分钟29秒。
-* 总共生成4个镜像，合计：278MB
+* 在【macbook pro 15 英寸，2014 年中】电脑，电信20M宽带中执行`date && docker-compose build && docker-compose up -d && date `，总共费用1分钟07秒。
+* 总共生成4个镜像，合计：282MB
 
 # 模块组成
 
-* alpine 3.4为基础包
+* alpine 最新版为基础包，目前是3.4
 * nginx 1.10.1
-* mariaDB 10.1.14 兼容mysql 5.6 
-* php 5.6.25
+* mariaDB 10.1.17 兼容mysql 5.6 
+* php 5.6.26
 
 # 开始使用
 
