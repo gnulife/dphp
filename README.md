@@ -51,12 +51,12 @@
 
 *   php模块自定义：phpfpm/Dockerfile
 
-      参照注释自行修改即可
+        参照注释自行修改即可
 
 *   mysql默认帐号密码：docker-compose.yml， 可以根据需要修改，其他配置可在mysql/my.cnf中修改
 
     ```yaml
-      environment:
+        environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=your_db_name
     - MYSQL_USER=developer
@@ -65,7 +65,7 @@
 
 *   其他配置调整可以参照源码和注释修改，然后运行
 
-    `docker-compose build && docker-compose up -d`
+      `docker-compose build && docker-compose up -d`
 
 # 疑问与解答 
 
@@ -75,8 +75,8 @@
 
 * Windows下有一些问题，请参考【[windows用户填坑建议](windows用户填坑建议.md)】
 
+* 其他有关docker基本概念和命令操作，请参考【[docker基础概念和命令操作](docker基础概念和命令操作.md)】。
 
-其他有关docker基本概念和环境配置请自行搜索解决。
 
 可能还有一些不完善，有什么意见建议欢迎与我联系。
 
