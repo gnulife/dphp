@@ -3,7 +3,9 @@
 
 2. docker官方有明确说明，仅支持windows 10 的特定版本，请务必先核对清楚：
 
-   `Docker for Windows requires 64bit Windows 10 Pro, Enterprise and Education (1511 November update, Build 10586 or later) and Microsoft Hyper-V. `
+```
+Docker for Windows requires 64bit Windows 10 Pro, Enterprise and Education (1511 November update, Build 10586 or later) and Microsoft Hyper-V. 
+```
 
 ## 关于volumes的配置
 
@@ -13,14 +15,21 @@
 
 ## 在windows下mysql容器无法正常运行
 
-* 错误提示：`standard_init_linux.go:175: exec user process caused "no such file or directory"`
-* 这是因为git for windows的默认设置会强制将代码换行符强行转为dos格式，需要修改设置后重新git clone：
-* `git config --global core.autocrlf false`
-* `cd WORK`
-* `git clone https://github.com/gnulife/dphp`
-* `cd dphp`
-* `docker-compose build`
-* `docker-compose up -d`
+错误提示：`standard_init_linux.go:175: exec user process caused "no such file or directory"`
+
+这是因为git for windows的默认设置会强制将代码换行符强行转为dos格式，需要修改设置后重新git clone：
+
+```shell
+git config --global core.autocrlf false
+cd WORK
+git clone https://github.com/gnulife/dphp
+cd dphp
+docker-compose build
+docker-compose up -d
+```
+
+
+
 ## 其他问题
 
 * 查看docker日志：打开Docker for Windows的Settings中的Diagnose & Feedback下，有一个log file链接
