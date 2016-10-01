@@ -4,7 +4,8 @@
 2. docker官方有明确说明，仅支持windows 10 的特定版本，请务必先核对清楚：
 
 ```
-Docker for Windows requires 64bit Windows 10 Pro, Enterprise and Education (1511 November update, Build 10586 or later) and Microsoft Hyper-V. 
+Docker for Windows requires 64bit Windows 10 Pro, Enterprise and Education (1511 November update,
+Build 10586 or later) and Microsoft Hyper-V. 
 ```
 
 ## 关于volumes的配置
