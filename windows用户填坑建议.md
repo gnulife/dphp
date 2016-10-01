@@ -21,7 +21,7 @@ Docker for Windows requires 64bit Windows 10 Pro, Enterprise and Education (1511
 
 ```shell
 git config --global core.autocrlf false
-cd WORK
+cd WORKDIR
 git clone https://github.com/gnulife/dphp
 cd dphp
 docker-compose build
