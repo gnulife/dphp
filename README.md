@@ -45,27 +45,27 @@
 
 # 配置调整
 
-* 虚拟主机自定义：nginx/conf/vhosts.conf
+*   虚拟主机自定义：nginx/conf/vhosts.conf
 
-  修改里面server_name和root名称为自己想要定义的域名，然后将这个域名添加到/etc/hosts文件，即可建立自己的虚拟主机
+    修改里面server_name和root名称为自己想要定义的域名，然后将这个域名添加到/etc/hosts文件，即可建立自己的虚拟主机
 
-* php模块自定义：phpfpm/Dockerfile
+*   php模块自定义：phpfpm/Dockerfile
 
-  参照注释自行修改即可
+      参照注释自行修改即可
 
-* mysql默认帐号密码：docker-compose.yml， 可以根据需要修改，其他配置可在mysql/my.cnf中修改
+*   mysql默认帐号密码：docker-compose.yml， 可以根据需要修改，其他配置可在mysql/my.cnf中修改
 
-  ```yaml
-  environment:
+    ```yaml
+      environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=your_db_name
     - MYSQL_USER=developer
     - MYSQL_PASSWORD=developer
-  ```
+    ```
 
-* 其他配置调整可以参照源码和注释修改，然后运行
+*   其他配置调整可以参照源码和注释修改，然后运行
 
-  `docker-compose build && docker-compose up -d`
+    `docker-compose build && docker-compose up -d`
 
 # 疑问与解答 
 
@@ -73,15 +73,10 @@
 
   整个镜像包的build过程已全部配置成国内镜像，理论上速度是非常快的，docker本身也要配置成采用国内镜像，方法可自行搜索：docker 国内加速。每台电脑、网络环境都不一样，上面的时间是我在我的电脑上电信20M宽度环境下的build速度，仅供参考。
 
-* 我在windows下mysql容器无法正常运行，提示：
+* Windows下有一些问题，请参考【[windows用户填坑建议](windows用户填坑建议.md)】
 
-  `standard_init_linux.go:175: exec user process caused "no such file or directory"`
 
-  这是因为git for windows的默认设置会强制将代码换行符强行转为dos格式，需要修改设置后重新git clone：
-
-  `git config --global core.autocrlf false `
-
-* 其他有关docker基本概念和环境配置请自行搜索解决。
+其他有关docker基本概念和环境配置请自行搜索解决。
 
 可能还有一些不完善，有什么意见建议欢迎与我联系。
 
