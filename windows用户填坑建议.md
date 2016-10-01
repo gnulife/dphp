@@ -17,7 +17,7 @@ Docker for Windows requires 64bit Windows 10 Pro, Enterprise and Education (1511
 
 错误提示：`standard_init_linux.go:175: exec user process caused "no such file or directory"`
 
-这是因为git for windows的默认设置会强制将代码换行符强行转为dos格式，需要修改设置后重新git clone：
+这是因为git for windows的默认设置会强制将代码换行符强行转为dos格式，造成shell脚本无法运行，需要修改设置后重新git clone：
 
 ```shell
 git config --global core.autocrlf false
