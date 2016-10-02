@@ -39,8 +39,8 @@
 
 # 开始使用
 
-* git clone https://github.com/gnulife/dphp.git
-* docker-compose build && docker-compose up -d
+* `git clone https://github.com/gnulife/dphp.git`
+* `cd dphp && docker-compose build && docker-compose up -d`
 * open http://localhost/
 * [可选] 配置别名：source alias.sh
 
