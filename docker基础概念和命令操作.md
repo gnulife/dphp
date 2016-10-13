@@ -19,6 +19,6 @@
 * 批量创建镜像：docker-compose build
 * 批量启动容器：docker-compose up -d
 * 启动一个镜像进入shell不退出：docker run -it image_name sh
-* 进入容器shell不退出：docker exec container_name sh
+* 进入容器shell不退出：docker exec -it container_name sh
 * 启动一个镜像执行一个命令并退出：docker run --rm image_name command_name
 * 在容器中执行一个命令并退出：docker exec container_name command_name
