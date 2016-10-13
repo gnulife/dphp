@@ -3,6 +3,8 @@ MAINTAINER water youwater@gmail.com
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
+RUN echo '@testing http://mirrors.ustc.edu.cn/alpine/edge/testing' >> /etc/apk/repositories
+
 RUN apk update && apk upgrade
 
 #时区配置
@@ -40,6 +42,7 @@ RUN apk add php5 \
     php5-curl \
     php5-ctype \
     php5-phar \
+    php5-redis@testing \
     openssl
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包

@@ -1,5 +1,6 @@
-# 版本：1.08 更新记录
+# 版本：1.10 更新记录
 
+* 增加 redis配置
 * 增加【[windows用户填坑建议](windows用户填坑建议.md)】【[docker基础概念和命令操作](docker基础概念和命令操作.md)】说明文档
 * 增加配置调整说明
 * 将nginx、php日志也放在host主机volumes/apps/logs/下，方便调试

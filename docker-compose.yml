@@ -15,11 +15,19 @@ services:
       - MYSQL_PASSWORD=developer
     restart: always
 
+  redis:
+    build: redis
+    image: water/redis
+    ports:
+      - "6379:6379"
+    restart: always
+    
   phpfpm:
     build: phpfpm
     image: water/phpfpm
     links:
       - mysql
+      - redis
     volumes:
       - "./volumes/apps:/apps"
     ports:
