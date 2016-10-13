@@ -53,12 +53,12 @@
 
 *   php模块自定义：phpfpm/Dockerfile
 
-        参照注释自行修改即可
+          参照注释自行修改即可
 
 *   mysql默认帐号密码：docker-compose.yml， 可以根据需要修改，其他配置可在mysql/my.cnf中修改
 
     ```yaml
-        environment:
+    environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=your_db_name
     - MYSQL_USER=developer
@@ -67,7 +67,7 @@
 
 *   其他配置调整可以参照源码和注释修改，然后运行
 
-      `docker-compose build && docker-compose up -d`
+        `docker-compose build && docker-compose up -d`
 
 # 疑问与解答 
 
@@ -78,6 +78,10 @@
 * Windows下有一些问题，请参考【[windows用户填坑建议](windows用户填坑建议.md)】
 
 * 其他有关docker基本概念和命令操作，请参考【[docker基础概念和命令操作](docker基础概念和命令操作.md)】。
+
+* 如何跨容器访问服务？比如C1中的nginx如果访问C2中的php-fpm服务？
+
+  docker运行中的各个容器相当于不同的互相隔离的计算机，C1中的nginx若要访问C2中的php-fpm，关键点在于要把host指向改为正确的地址，我们如何知道C2的ip呢？docker-compose已经帮我们做好了一个默认配置：php-fpm别名指向C2的ip。所以我们只要：fastcgi_pass   phpfpm:9000; 就可以了。其他比如数据库的访问也类似，使用数据库服务的别名mysql来当作host访问就可以了。
 
 
 可能还有一些不完善，有什么意见建议欢迎与我联系。
