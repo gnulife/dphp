@@ -22,9 +22,23 @@ services:
       - "6379:6379"
     restart: always
     
-  phpfpm:
-    build: phpfpm
-    image: water/phpfpm
+  # php5配置
+  # phpfpm:
+  #   build: phpfpm
+  #   image: water/phpfpm
+  #   links:
+  #     - mysql
+  #     - redis
+  #   volumes:
+  #     - "./volumes/apps:/apps"
+  #   ports:
+  #     - "9000:9000"
+  #   restart: always
+
+  # php7配置
+  phpfpm7:
+    build: phpfpm7
+    image: water/phpfpm7
     links:
       - mysql
       - redis
@@ -34,13 +48,14 @@ services:
       - "9000:9000"
     restart: always
 
+  # 切换php版本时，请注意修改下面nginx相应的服务别名配置
   nginx:
     build: nginx
     image: water/nginx
     links:
-      - phpfpm
+      - phpfpm7:phpfpm
     volumes_from:
-      - phpfpm
+      - phpfpm7
     ports:
       - "80:80"
     restart: always

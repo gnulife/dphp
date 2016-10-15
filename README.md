@@ -1,6 +1,7 @@
-# 版本：1.10 更新记录
+# 版本：1.20 更新记录
 
-* 增加 redis配置
+* 增加 php7配置(默认)：切换php版本，请参照docker-compose.yml里的注释修改
+* 增加 redis配置：可通过redis:6379访问
 * 增加【[windows用户填坑建议](windows用户填坑建议.md)】【[docker基础概念和命令操作](docker基础概念和命令操作.md)】说明文档
 * 增加配置调整说明
 * 将nginx、php日志也放在host主机volumes/apps/logs/下，方便调试
@@ -36,7 +37,8 @@
 * alpine 最新版为基础包，目前是3.4
 * nginx 1.10.1
 * mariaDB 10.1.17 兼容mysql 5.6 
-* php 5.6.26
+* php 5.6.26 & php7.0.11，目前默认为php7
+* redis 3.2.0
 
 # 开始使用
 
@@ -82,6 +84,10 @@
 * 如何跨容器访问服务？比如C1中的nginx如果访问C2中的php-fpm服务？
 
   docker运行中的各个容器相当于不同的互相隔离的计算机，C1中的nginx若要访问C2中的php-fpm，关键点在于要把host指向改为正确的地址，我们如何知道C2的ip呢？docker-compose已经帮我们做好了一个默认配置：php-fpm别名指向C2的ip。所以我们只要：fastcgi_pass   phpfpm:9000; 就可以了。其他比如数据库的访问也类似，使用数据库服务的别名mysql来当作host访问就可以了。
+
+* 经常出现无法访问mirror服务器的情况，造成无法正常build。
+
+  估计是由于国内电信的dns不稳定造成，把host主机的dns换为其他第三方比如阿里dns：223.5.5.5 可能得到改善，大家可以试一下，看有没有效果。
 
 
 可能还有一些不完善，有什么意见建议欢迎与我联系。
