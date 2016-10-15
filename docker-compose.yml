@@ -1,8 +1,16 @@
 version: '2'
 services:
+
+  # 公共镜像，只配置了国内镜像加速和中国时区配置
+  alpine:
+    build: alpine
+    image: water/alpine
+
   mysql:
     build: mysql
     image: water/mysql
+    depends_on:
+      - "alpine"
     volumes:
       - "./volumes/mysql:/apps/mysql"
     ports:
@@ -18,6 +26,8 @@ services:
   redis:
     build: redis
     image: water/redis
+    depends_on:
+      - "alpine"
     ports:
       - "6379:6379"
     restart: always
@@ -26,6 +36,8 @@ services:
   # phpfpm:
   #   build: phpfpm
   #   image: water/phpfpm
+  #   depends_on:
+  #     - "alpine"
   #   links:
   #     - mysql
   #     - redis
@@ -39,6 +51,8 @@ services:
   phpfpm7:
     build: phpfpm7
     image: water/phpfpm7
+    depends_on:
+      - "alpine"
     links:
       - mysql
       - redis
@@ -52,6 +66,8 @@ services:
   nginx:
     build: nginx
     image: water/nginx
+    depends_on:
+      - "alpine"
     links:
       - phpfpm7:phpfpm
     volumes_from:
