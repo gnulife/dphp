@@ -2,7 +2,6 @@ FROM water/alpine
 MAINTAINER water youwater@gmail.com
 
 # 软件包安装
-# RUN apk add openssl-dev libssl1.0 libcrypto1.0 openssl
 RUN apk add php7@community \
         php7-fpm@community \
         php7-opcache@community \
@@ -37,6 +36,7 @@ RUN apk add php7@community \
         php7-exif@community \
         php7-xsl@community \
         php7-ldap@community \
+        php7-openssl@community \
         php7-bcmath@community
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包

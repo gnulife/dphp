@@ -1,5 +1,6 @@
-# 版本：1.22 更新记录
+# 版本：1.24 更新记录
 
+* 修改仓库统一为edge，以解决php7-openssl支持冲突问题
 * 新加alpine国内加速基础包，让其他包均从这个包继承，代码更优雅一些，构建效率更高一些。
 * 增加 php7配置(默认)：切换php版本，请参照docker-compose.yml里的注释修改
 * 增加 redis配置：可通过redis:6379访问
@@ -60,7 +61,7 @@
 *   mysql默认帐号密码：docker-compose.yml， 可以根据需要修改，其他配置可在mysql/my.cnf中修改
 
     ```yaml
-      environment:
+    environment:
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_DATABASE=your_db_name
     - MYSQL_USER=developer
@@ -69,7 +70,7 @@
 
 *   其他配置调整可以参照源码和注释修改，然后运行
 
-          docker-compose build && docker-compose up -d
+    docker-compose build && docker-compose up -d
 
 # 疑问与解答 
 
