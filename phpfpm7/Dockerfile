@@ -51,6 +51,7 @@ ENV MAX_EXECUTION_TIME 600
 ENV PHP_MAX_POST 100M
 
 # RUN touch /etc/php7/fpm.d/none.conf
+RUN ln -s /usr/bin/php7 /usr/bin/php
 RUN chmod 777 -R /var/log/
 
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
