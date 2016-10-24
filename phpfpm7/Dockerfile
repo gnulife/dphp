@@ -39,9 +39,11 @@ RUN apk add php7@community \
         php7-openssl@community \
         php7-bcmath@community
 
+RUN ln -s /usr/bin/php7 /usr/bin/php
+
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
-# RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
-# RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 # 软件包参数配置
 ENV PHP_MEMORY_LIMIT 512M
@@ -51,7 +53,6 @@ ENV MAX_EXECUTION_TIME 600
 ENV PHP_MAX_POST 100M
 
 # RUN touch /etc/php7/fpm.d/none.conf
-RUN ln -s /usr/bin/php7 /usr/bin/php
 RUN chmod 777 -R /var/log/
 
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
