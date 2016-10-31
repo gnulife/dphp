@@ -2,6 +2,7 @@ FROM water/alpine
 MAINTAINER water youwater@gmail.com
 
 # 软件包安装
+RUN apk update
 RUN apk add php5 \
 	php5-fpm \
 	php5-opcache \
@@ -31,6 +32,7 @@ RUN apk add php5 \
     php5-ctype \
     php5-phar \
     php5-redis@testing \
+    php5-xdebug@community \
     openssl
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
@@ -46,6 +48,16 @@ ENV PHP_MAX_POST 100M
 
 RUN touch /etc/php5/fpm.d/none.conf
 RUN chmod 777 -R /var/log/
+
+RUN echo "zend_extension=xdebug.so" > /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.remote_enable=1" >> /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.remote_port=9000" >> /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.remote_log=/apps/logs/xdebug.log" >> /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.remote_mode=req" >> /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.idekey=PHPSTORM" >> /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.remote_host = 192.168.1.121" >> /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.remote_connect_back = 0" >> /etc/php5/conf.d/xdebug.ini \
+    && echo "xdebug.remote_autostart=true" >> /etc/php5/conf.d/xdebug.ini 
 
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/php-fpm.conf && \
 sed -i -e "s/listen\s*=\s*127.0.0.1:9000/listen = 9000/g" /etc/php5/php-fpm.conf && \
