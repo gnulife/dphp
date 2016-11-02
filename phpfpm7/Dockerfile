@@ -55,6 +55,16 @@ ENV PHP_MAX_POST 100M
 # RUN touch /etc/php7/fpm.d/none.conf
 RUN chmod 777 -R /var/log/
 
+RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.remote_enable=1" >> /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.remote_port=9000" >> /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.remote_log=/apps/logs/xdebug.log" >> /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.remote_mode=req" >> /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.idekey=PHPSTORM" >> /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.remote_host = 192.168.1.121" >> /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.remote_connect_back = 0" >> /etc/php7/conf.d/xdebug.ini \
+    && echo "xdebug.remote_autostart=true" >> /etc/php7/conf.d/xdebug.ini 
+
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
 sed -i -e "s/listen\s*=\s*127.0.0.1:9000/listen = 9000/g" /etc/php7/php-fpm.d/www.conf && \
 sed -i "s|date.timezone =.*|date.timezone = ${TIMEZONE}|" /etc/php7/php.ini && \
