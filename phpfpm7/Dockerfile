@@ -32,7 +32,7 @@ RUN apk add php7@community \
         php7-pear@community \
         php7-redis@testing \
         php7-mbstring@community \
-        php7-xdebug@testing \
+        php7-xdebug@community \
         php7-exif@community \
         php7-xsl@community \
         php7-ldap@community \
