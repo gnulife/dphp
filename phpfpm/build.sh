@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # 清除已有的
-docker stop phpfpm7
-docker rm phpfpm7
-docker rmi water/phpfpm7 
+docker stop phpfpm
+docker rm phpfpm
+docker rmi water/phpfpm
 
 # 重新生成
-docker build -t water/phpfpm7 ./
+docker build -t water/phpfpm ./

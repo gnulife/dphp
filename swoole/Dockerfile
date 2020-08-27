@@ -1,5 +1,5 @@
 FROM php:cli-alpine
-MAINTAINER water youwater@gmail.com
+LABEL maintainer="youwater@gmail.com"
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
 RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' > /etc/apk/repositories

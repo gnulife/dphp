@@ -1,5 +1,5 @@
 FROM water/alpine
-MAINTAINER water youwater@gmail.com
+LABEL maintainer="youwater@gmail.com"
 
 # 软件包安装
 RUN apk add php7@community \
@@ -30,20 +30,19 @@ RUN apk add php7@community \
         php7-soap@community \
         php7-dev@community \
         php7-pear@community \
-        php7-redis@testing \
+        php7-pecl-redis@community \
         php7-mbstring@community \
-        php7-xdebug@community \
         php7-exif@community \
         php7-xsl@community \
         php7-ldap@community \
         php7-openssl@community \
-        php7-bcmath@community
-
-RUN ln -s /usr/bin/php7 /usr/bin/php
+        php7-bcmath@community \
+	php7-tokenizer@community
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
-RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+RUN wget -O /bin/composer https://mirrors.aliyun.com/composer/composer.phar 
+RUN chmod +x /bin/composer
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # 软件包参数配置
 ENV PHP_MEMORY_LIMIT 512M
@@ -54,16 +53,6 @@ ENV PHP_MAX_POST 100M
 
 # RUN touch /etc/php7/fpm.d/none.conf
 RUN chmod 777 -R /var/log/
-
-RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=1" >> /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.remote_port=9000" >> /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.remote_log=/apps/logs/xdebug.log" >> /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.remote_mode=req" >> /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.idekey=PHPSTORM" >> /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.remote_host = 192.168.1.121" >> /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.remote_connect_back = 0" >> /etc/php7/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=true" >> /etc/php7/conf.d/xdebug.ini 
 
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
 sed -i -e "s/listen\s*=\s*127.0.0.1:9000/listen = 9000/g" /etc/php7/php-fpm.d/www.conf && \
@@ -77,8 +66,7 @@ sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php7/php.ini && \
 sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php7/php.ini && \
 sed -i "s/display_errors = Off/display_errors = On/" /etc/php7/php.ini && \
 sed -i "s/;catch_workers_output = yes/catch_workers_output = yes/" /etc/php7/php-fpm.conf && \
-sed -i "s/;error_log = php_errors.log/error_log = \/apps\/logs\/php_errors.log/" /etc/php7/php.ini && \
-mkdir /apps
+sed -i "s/;error_log = php_errors.log/error_log = \/apps\/logs\/php_errors.log/" /etc/php7/php.ini 
 
 WORKDIR /apps
 
@@ -89,3 +77,4 @@ EXPOSE 9000
 
 # 容器命令执行
 CMD ["php-fpm7"]
+# CMD ["sh"]
