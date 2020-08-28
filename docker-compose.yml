@@ -32,23 +32,9 @@ services:
       - "6379:6379"
     restart: always
     
-  # php5配置
-  # phpfpm:
-  #   build: phpfpm
-  #   image: water/phpfpm
-  #   depends_on:
-  #     - "alpine"
-  #   links:
-  #     - mysql
-  #     - redis
-  #   volumes:
-  #     - "./volumes/apps:/apps"
-  #   restart: always
-
-  # php7配置
-  phpfpm7:
-    build: phpfpm7
-    image: water/phpfpm7
+  phpfpm:
+    build: phpfpm
+    image: water/phpfpm
     depends_on:
       - "alpine"
     links:
@@ -58,16 +44,15 @@ services:
       - "./volumes/apps:/apps"
     restart: always
 
-  # 切换php版本时，请注意修改下面nginx相应的服务别名配置
   nginx:
     build: nginx
     image: water/nginx
     depends_on:
       - "alpine"
     links:
-      - phpfpm7:phpfpm
+      - phpfpm:phpfpm
     volumes_from:
-      - phpfpm7
+      - phpfpm
     ports:
       - "80:80"
     restart: always

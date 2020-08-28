@@ -1,5 +1,4 @@
 FROM water/alpine
-MAINTAINER water youwater@gmail.com
 
 # 软件包安装
 RUN apk add nginx
